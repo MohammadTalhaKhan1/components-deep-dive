@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-server-elements',
@@ -7,8 +8,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ServerElementsComponent implements OnInit {
   @Input() element: { type: string, name: string, content: string };
+  @Output() childEvent = new EventEmitter();
   constructor() { }
-
+  fireEvent() {
+    this.childEvent.emit('Parent Event');
+  }
   ngOnInit() {
   }
 

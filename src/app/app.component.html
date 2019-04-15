@@ -2,11 +2,16 @@
   <app-cockpit 
   (serverCreated)="onServerAdded($event)"
   (bpCreated)='onBlueprintAdded($event)'
+  [parentData]="name"
   ></app-cockpit> 
   <hr>
+   {{message}}
   <div class="row">
     <div class="col-xs-12">
-      <app-server-elements *ngFor="let serverElement of  serverElements" [element]="serverElement"></app-server-elements> 
+      <app-server-elements *ngFor="let serverElement of  serverElements" [element]="serverElement"
+      (childEvent) = "message = $event"
+      ></app-server-elements> 
+     
     </div>
   </div>
 </div>
